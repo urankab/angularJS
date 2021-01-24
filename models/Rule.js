@@ -1,11 +1,7 @@
 const mongoose = require('mongoose')
 
 const RuleSchema = mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: {
+    content: {
         type: String,
         required: true
     }

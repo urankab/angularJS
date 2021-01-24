@@ -15,8 +15,7 @@ router.get('/', async (req, res) => {
 // CREATE A RULE
 router.post('/', async (req, res) => {
     const rule = new Rule({
-        title: req.body.title,
-        description: req.body.description
+        content: req.body.content,
     });
     console.log(req.body)
     try {

@@ -1,46 +1,36 @@
-const express = require('express')
-const session = require('express-session')
-const app = express()
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-require('dotenv/config')
+// MODULE
+let angularApp = angular.module('angularApp', []);
 
-// MIDDLEWARES
-app.use(cors())
-app.use(bodyParser.json())
+// CONTROLLERS
+angularApp.controller('mainController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+    $scope.handle = ''
 
-// IMPORT ROUTES
-const rulesRoute = require('./routes/rules')
-
-// ROUTES
-app.use('/rules', rulesRoute)
-
-app.get('/', (req, res) => {
-    res.send('We are home!')
-});
-
-app.use(session({
-    secret: 'cute cats',
-    resave: true,
-    saveUninitialized: false
-}))
-
-// CONNECT TO DB
-const initiateMongoServer = async () => {
-    try {
-        mongoose.connect(
-            process.env.DB_CONNECTION,
-            { useNewUrlParser: true, useUnifiedTopology: true },
-            () => console.log('Connected to MongoDB')
-        )
-    }catch(err){
-        console.log(err)
+    $scope.lowerCaseHandle = function () {
+        return $filter('lowercase')($scope.handle)
     }
-}
 
-initiateMongoServer()
+    $scope.characters = 5
 
-// LISTEN TO SERVER
-const PORT = process.env.PORT || 5000
-app.listen(PORT, console.log(`Server started on port ${PORT}`))
+    $http.get('http://localhost:5000/rules')
+        .then(function (response) {
+            $scope.rules = response.data
+        }, function (response) {
+            console.log('Something went wrong', response)
+        });
+
+    $scope.newRule = ''
+    $scope.addRule = function () {
+        $http.post('http://localhost:5000/rules', { content: $scope.newRule })
+            .then(function (response) {
+                $http.get('http://localhost:5000/rules')
+                    .then(function (response) {
+                        $scope.rules = response.data
+                    }, function (response) {
+                        $scope.rules = 'Something went wrong'
+                    });
+            }, function (response) {
+                console.log('Something went wrong', response)
+            });
+    }
+
+}]);
