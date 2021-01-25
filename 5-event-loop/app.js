@@ -10,4 +10,11 @@ angularApp.controller('mainController', ['$scope', '$filter', function ($scope, 
         return $filter('lowercase')($scope.handle)
     }
 
+    // Creates a watch of some variable
+    $scope.$watch('handle', function (oldValue, newValue) {
+        console.log('Changed!')
+        console.log('Old: ', oldValue)
+        console.log('New: ', newValue)
+    })
+
 }]);

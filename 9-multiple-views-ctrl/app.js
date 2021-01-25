@@ -8,7 +8,7 @@ angularApp.controller('mainController', ['$scope', function ($scope) {
 
 }]);
 
-angularApp.controller('secondController', ['$scope', function ($scope) {
-    $scope.name = 'Second'
+// angularApp.controller('secondController', ['$scope', function ($scope) {
+//     $scope.name = 'Second'
 
-}]);
+// }]);

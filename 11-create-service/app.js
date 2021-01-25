@@ -30,6 +30,7 @@ angularApp.service('nameService', function() {
 // CONTROLLERS
 angularApp.controller('mainController', ['$scope', '$log', 'nameService', 
 function ($scope, $log, nameService) {
+    
     $scope.name = nameService.name
 
     $log.log(nameService.name)
@@ -39,7 +40,8 @@ function ($scope, $log, nameService) {
 
 angularApp.controller('secondController', ['$scope', '$log', 'nameService', 
 function ($scope, $log, nameService) {
+
     $scope.name = nameService.name
-    
+
 }]);
 

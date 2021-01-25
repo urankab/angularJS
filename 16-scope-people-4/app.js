@@ -10,20 +10,6 @@ angularApp.config(function ($routeProvider) {
             controller: 'mainController'
         })
 
-        .when('/second', {
-            templateUrl: 'second.html',
-            controller: 'secondController'
-        })
-})
-
-// CUSTOM SERVICE
-angularApp.service('nameService', function () {
-    let self = this
-
-    this.name = 'Uranka B'
-    this.nameLength = function () {
-        return self.name.length
-    }
 })
 
 // CONTROLLERS
@@ -35,21 +21,14 @@ angularApp.controller('mainController', ['$scope', '$log', '$http',
         }
 
         $http.get('http://localhost:5000/people')
-        .then(function (response) {
-            $scope.people = response.data
-        }, function (response) {
-            console.log('Something went wrong', response)
-        });
+            .then(function (response) {
+                $scope.people = response.data
+            }, function (response) {
+                console.log('Something went wrong', response)
+            });
     }
 ]);
 
-
-angularApp.controller('secondController', ['$scope', '$log', 'nameService',
-    function ($scope, $log, nameService) {
-
-
-    }
-]);
 
 // DIRECTIVES
 angularApp.directive("searchResult", function () {
