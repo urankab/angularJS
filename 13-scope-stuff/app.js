@@ -26,20 +26,30 @@ angularApp.service('nameService', function() {
     }
 })
 
-
 // CONTROLLERS
 angularApp.controller('mainController', ['$scope', '$log', 'nameService', 
 function ($scope, $log, nameService) {
-    $scope.name = nameService.name
-
-    $log.log(nameService.name)
-    $log.log(nameService.nameLength())
+    $scope.person = {
+        name: 'Uranka',
+        address: '123 Main St'
+    }
     
 }]);
+
 
 angularApp.controller('secondController', ['$scope', '$log', 'nameService', 
 function ($scope, $log, nameService) {
-    $scope.name = nameService.name
+
     
 }]);
 
+// DIRECTIVES
+angularApp.directive("searchResult", function() {
+    return {
+        templateUrl: 'directives/searchResult.html',
+        scope: {
+            personName: "@",
+            personAddress: "@"
+        }
+    }
+})

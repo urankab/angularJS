@@ -12,9 +12,13 @@ app.use(bodyParser.json())
 
 // IMPORT ROUTES
 const rulesRoute = require('./routes/rules')
+const peopleRoute = require('./routes/people')
+
 
 // ROUTES
 app.use('/rules', rulesRoute)
+app.use('/people', peopleRoute)
+
 
 app.get('/', (req, res) => {
     res.send('We are home!')
