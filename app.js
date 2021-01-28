@@ -3,7 +3,6 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-require('dotenv/config')
 
 // MIDDLEWARES
 app.use(cors())
@@ -13,22 +12,19 @@ app.use(bodyParser.json())
 const rulesRoute = require('./routes/rules')
 const peopleRoute = require('./routes/people')
 
-
 // ROUTES
 app.use('/rules', rulesRoute)
 app.use('/people', peopleRoute)
-
 
 app.get('/', (req, res) => {
     res.send('We are home!')
 });
 
-
 // CONNECT TO DB
 const initiateMongoServer = async () => {
     try {
         mongoose.connect(
-            process.env.DB_CONNECTION,
+            'mongodb+srv://urankab:urankab@cluster0.ggzxf.mongodb.net/angularjs?retryWrites=true&w=majority',
             { useNewUrlParser: true, useUnifiedTopology: true },
             () => console.log('Connected to MongoDB')
         )
