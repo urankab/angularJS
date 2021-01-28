@@ -1,14 +1,5 @@
 // MODULE
-let angularApp = angular.module('angularApp', ['ngRoute']);
-
-// ROUTES
-angularApp.config(function ($routeProvider) {
-    $routeProvider
-    .when('/', {
-        templateUrl: 'main.html',
-        controller: 'mainController'
-    })
-})
+let angularApp = angular.module('angularApp', []);
 
 
 // CONTROLLERS

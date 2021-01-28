@@ -9,6 +9,14 @@ angularApp.controller('mainController', ['$scope', '$filter', function ($scope, 
         return $filter('lowercase')($scope.handle)
     }
 
-    $scope.characters = 5
+    $scope.rules = [
+      
+        { content: "Must be 5 characters" },
+        { content: "Must not be used elsewhere" },
+        { content: "Must be cool" }
+        
+    ];
+    
+    console.log($scope.rules);
 
 }]);

@@ -1,17 +1,19 @@
-// MODULE
+// MODULE - add dependencies in the square brackets
 let angularApp = angular.module('angularApp', []);
 
-// CONTROLLERS
+// CONTROLLER - controls and acts as a brain for the view 
 angularApp.controller('mainController', function ($scope, $log, $filter) {
-    $scope.name = 'Uranka'
+    /** $scope is a built-in object you can assign values/functions too ...
+        properties made in the controller that can be referenced in the view */
+    $scope.name = 'Everyone'
     
     // $filter is used to format data displayed to the user
     $scope.formattedName = $filter('uppercase')($scope.name)
 
-    // $log is used to simplify debugging and troubleshooting
+    // $log is used to simplify debugging and troubleshooting, pretty much console.log
     $log.log('Hi!')
     $log.info($scope.name)
-    $log.info($scope.formattedName)
+    $log.info($scope)
 
     $scope.multiplyPlz = function(a, b) {
         let result = a * b
@@ -24,7 +26,7 @@ angularApp.controller('mainController', function ($scope, $log, $filter) {
     }
 
     // $scope.multiplyPlz(2, 1)
-    // $scope.multiplyPlz(9000, 1)
+    $scope.multiplyPlz(9000, 1)
 
     console.log($scope)
 });

@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html lang="en-us" ng-app="angularApp">
-  <head>
-    <title>More Scope Stuff</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta charset="UTF-8" />
 
-    <!-- load bootstrap and fontawesome via CDN -->
-    <link
-      <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <style>
-      html,
-      body {
-        font-size: 1.1em;
-      }
-    </style>
+<head>
+  <title>More Scope Stuff</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta charset="UTF-8" />
 
-    <!-- load angular via CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
-    <script src="app.js"></script>
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-light" style="background-color: #e3f2fd">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/">AngularJS</a>
-          </div>
+  <!-- load bootstrap and fontawesome via CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <style>
+    html,
+    body {
+      font-size: 1.1em;
+    }
+  </style>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-          </ul>
+  <!-- load angular via CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">AngularJS</a>
         </div>
-      </nav>
-    </header>
-    <div class="container">
 
-      <div ng-view></div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container">
 
+    <div ng-controller="mainController">
+      <label>Search</label>
+      <input type="text" value="Doe" />
+
+      <h3>Search Results</h3>
+      <div class="list-group">
+
+        <search-result 
+          person-object="person" 
+          formatted-address-function="formattedAddress(aperson)""
+          ng-repeat=" person in people">
+        </search-result>
+
+      </div>
     </div>
-  </body>
+
+  </div>
+</body>
+
 </html>

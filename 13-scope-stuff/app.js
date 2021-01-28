@@ -1,15 +1,6 @@
 // MODULE
-let angularApp = angular.module('angularApp', ['ngRoute']);
+let angularApp = angular.module('angularApp', []);
 
-
-// ROUTES
-angularApp.config(function ($routeProvider) {
-    $routeProvider
-    .when('/', {
-        templateUrl: 'main.html',
-        controller: 'mainController'
-    })
-})
 
 // CONTROLLERS
 angularApp.controller('mainController', ['$scope', 
@@ -24,6 +15,8 @@ function ($scope) {
 
 
 // DIRECTIVES
+// It is nice to create a different folder to keep directives organized!
+// Specify the path in templateUrl
 angularApp.directive("searchResult", function() {
     return {
         templateUrl: 'directives/searchResult.html',

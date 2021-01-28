@@ -1,5 +1,4 @@
 const express = require('express')
-const session = require('express-session')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -24,11 +23,6 @@ app.get('/', (req, res) => {
     res.send('We are home!')
 });
 
-app.use(session({
-    secret: 'cute cats',
-    resave: true,
-    saveUninitialized: false
-}))
 
 // CONNECT TO DB
 const initiateMongoServer = async () => {

@@ -43,18 +43,26 @@
 
     <div class="container">
       <div ng-controller="mainController">
+
+        <h2>Hi, {{ name }}!</h2>
+
         <form name="myForm">
           <label>
             Enter text:
-            <input type="email" ng-model="field" name="myField" required minlength="5" />
+            <input type="text"
+              name="myName"
+              ng-model="name"
+              ng-minlength="5"
+              ng-maxlength="10"
+              required />
           </label>
-          <div ng-messages="myForm.myField.$error" role="alert">
-            <div class="alert alert-danger" ng-message="required">
-              Please enter a value for this field.</div>
-            <div class="alert alert-warning"ng-message="minlength">
-              The value entered is too short.</div>
-          </div>
+          <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="minlength">Your field is too short</div>
+            <div ng-message="maxlength">Your field is too long</div>
+            <div ng-message-default>This field has an input error</div>
         </form>
+        
       </div>
     </div>
     

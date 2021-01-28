@@ -43,5 +43,7 @@ function ($scope, $log, nameService) {
 
     $scope.name = nameService.name
 
+    $log.log(nameService.name)
+    $log.log(nameService.nameLength())
 }]);
 
